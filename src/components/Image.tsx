@@ -14,7 +14,9 @@ export const Image = (props: ImageProps) => {
   }
 
   return (
-    <img src={url} title={title} className={`rounded-md ${styles}`}
-      onError={(e) => replaceUrl(e)} />
+    <div className={`flex flex-shrink-0 ${styles}`}>
+      <img src={url} title={title} className={`rounded-md shadow-sm size-full`}
+        onError={(e) => replaceUrl(e)} />
+    </div>
   )
 }

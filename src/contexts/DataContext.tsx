@@ -8,7 +8,6 @@ interface DataProviderProps {
 
 export const DataContext = createContext({
   items: [] as ProductItemType[],
-  displayAlert: () => { },
   initData: () => { },
 });
 
@@ -29,12 +28,8 @@ export const DataProvider = (props: DataProviderProps) => {
     setProductItems(items);
   }
 
-  const displayAlert = () => {
-    alert('działa');
-  };
-
   return (
-    <DataContext.Provider value={{ items: productItems, displayAlert, initData }}>
+    <DataContext.Provider value={{ items: productItems, initData }}>
       {children}
     </DataContext.Provider>
   );

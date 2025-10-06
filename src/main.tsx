@@ -5,6 +5,7 @@ import { ProductList } from './pages/ProductList/ProductList';
 import { ProductDetails } from './pages/ProductDetails/ProductDetails';
 import { NotFound } from './pages/NotFound/NotFound';
 import { DataProvider } from './contexts/DataContext';
+import { Layout } from './components/Layout';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -12,12 +13,14 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<DataProvider><Outlet /></DataProvider>}>
-          <Route index element={<ProductList />} />
-          <Route path="product">
-            <Route index element={<Navigate to="/" replace />} />
-            <Route path=":id" element={<ProductDetails />} />
+          <Route element={<Layout />}>
+            <Route index element={<ProductList />} />
+            <Route path="product">
+              <Route index element={<Navigate to="/" replace />} />
+              <Route path=":id" element={<ProductDetails />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
