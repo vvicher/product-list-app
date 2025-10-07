@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router";
 import { ProductList } from './pages/ProductList/ProductList';
 import { ProductDetails } from './pages/ProductDetails/ProductDetails';
 import { NotFound } from './pages/NotFound/NotFound';
-import { DataProvider } from './contexts/DataContext';
+import { DataProvider } from './contexts/DataProvider';
 import { Layout } from './components/Layout';
 import './index.css';
 
@@ -12,7 +12,11 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<DataProvider><Outlet /></DataProvider>}>
+        <Route path="/" element={
+          <DataProvider>
+            <Outlet />
+          </DataProvider>
+        }>
           <Route element={<Layout />}>
             <Route index element={<ProductList />} />
             <Route path="product">
@@ -24,5 +28,5 @@ createRoot(document.getElementById('root')!).render(
         </Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>,
-)
+  </StrictMode>
+);

@@ -20,7 +20,7 @@ export const ProductDetails = () => {
 
   React.useEffect(() => {
     if (product) {
-      setCurrentProduct(product ?? {} as ProductItemType)
+      setCurrentProduct(product ?? {} as ProductItemType);
     };
   }, [product]);
 
@@ -57,5 +57,5 @@ export const ProductDetails = () => {
       </div>
       {edit && <EditDialog onCancel={() => setEdit(false)} item={currentProduct} />}
     </>
-  )
-}
+  );
+};

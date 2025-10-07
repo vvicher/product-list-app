@@ -2,7 +2,7 @@ import { Image } from "./Image";
 
 interface ImagePlaceholderProps {
   styles?: string;
-}
+};
 
 export const ImagePlaceholder = (props: ImagePlaceholderProps) => {
   const { styles } = props;
@@ -15,5 +15,5 @@ export const ImagePlaceholder = (props: ImagePlaceholderProps) => {
       }}
       styles={styles}
     />
-  )
-}
+  );
+};

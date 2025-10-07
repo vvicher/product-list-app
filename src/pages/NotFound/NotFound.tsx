@@ -8,5 +8,5 @@ export const NotFound = () => {
       <h1 className="mb-3 text-3xl text-gray-600">Error 404</h1>
       <h2 className="text-xl text-gray-800">Requested page "{pathname}" was not found.</h2>
     </div>
-  )
-}
+  );
+};

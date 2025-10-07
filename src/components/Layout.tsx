@@ -4,11 +4,12 @@ import { DataContext } from '../contexts/DataContext';
 
 export const Layout = () => {
   const { initData } = React.useContext(DataContext);
+
   React.useEffect(() => {
     initData();
   }, []);
 
   return (
     <Outlet />
-  )
-}
+  );
+};

@@ -10,10 +10,10 @@ interface ListItemProps {
 export const ListItem = (props: ListItemProps) => {
   const { id, title, description, images } = props.item;
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const openProduct = () => {
-    navigate(`/product/${id}`)
+    navigate(`/product/${id}`);
   }
 
   const renderFirstImage = () => {
@@ -31,8 +31,8 @@ export const ListItem = (props: ListItemProps) => {
         }}
         styles="w-28 h-[84px]"
       />
-    )
-  }
+    );
+  };
 
   return (
     <div
@@ -45,5 +45,5 @@ export const ListItem = (props: ListItemProps) => {
         <p className="text-gray-800 mt-1">{description}</p>
       </div>
     </div>
-  )
-}
+  );
+};

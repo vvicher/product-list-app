@@ -5,7 +5,7 @@ import type { ProductItemType } from "../../../types/types";
 interface EditDialogProps {
   item: ProductItemType;
   onCancel: () => void;
-}
+};
 
 export const EditDialog = (props: EditDialogProps) => {
   const { onCancel } = props;
@@ -16,11 +16,11 @@ export const EditDialog = (props: EditDialogProps) => {
 
   const changeTitle = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setLocalTitle(e.target.value);
-  }
+  };
 
   const changeDescription = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setLocalDescription(e.target.value);
-  }
+  };
 
   return (
     <div className="fixed top-0 left-0 size-full bg-[rgba(0,0,0,0.5)] flex items-center justify-center">
@@ -54,5 +54,5 @@ export const EditDialog = (props: EditDialogProps) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
