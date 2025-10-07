@@ -1,7 +1,18 @@
 import { createContext } from 'react';
 import type { ProductItemType } from '../types/types';
 
-export const DataContext = createContext({
-  items: [] as ProductItemType[],
+type DataContextType = {
+  items: ProductItemType[];
+  initData: () => void,
+  updateProduct: (
+    title: string,
+    description: string,
+    id: string
+  ) => void,
+};
+
+export const DataContext = createContext<DataContextType>({
+  items: [],
   initData: () => { },
+  updateProduct: () => { },
 });

@@ -55,7 +55,7 @@ export const ProductDetails = () => {
           </div>
         </div>
       </div>
-      {edit && <EditDialog onCancel={() => setEdit(false)} item={currentProduct} />}
+      {edit && <EditDialog close={() => setEdit(false)} item={currentProduct} />}
     </>
   );
 };

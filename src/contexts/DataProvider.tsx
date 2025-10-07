@@ -15,18 +15,37 @@ export const DataProvider = (props: DataProviderProps) => {
   const initData = () => {
     const localStorageData = localStorage.getItem('products');
 
-    if (!localStorageData) {
-      localStorage.setItem('products', JSON.stringify(data));
-      setProductItems(data);
-    } else {
+    if (localStorageData) {
       const items = JSON.parse(localStorageData);
       setProductItems(items);
+    } else {
+      localStorage.setItem('products', JSON.stringify(data));
+      setProductItems(data);
     };
   };
 
+  const updateProduct = (newTitle: string, newDescription: string, id: string) => {
+    const productToUpdate = productItems.find(item => item.id === id);
+    const productToUpdateIndex = productItems.findIndex(item => item.id === id);
+
+    const updatedProduct = {
+      ...productToUpdate,
+      title: newTitle,
+      description: newDescription,
+      id: id,
+    };
+
+    const newProductItems = productItems.toSpliced(productToUpdateIndex, 1, updatedProduct);
+
+    setProductItems(newProductItems);
+    localStorage.setItem('products', JSON.stringify(newProductItems));
+
+    alert('Saved!');
+  };
+
   return (
-    <DataContext.Provider value={{ items: productItems, initData }}>
+    <DataContext value={{ items: productItems, initData, updateProduct }}>
       {children}
-    </DataContext.Provider>
+    </DataContext>
   );
 };

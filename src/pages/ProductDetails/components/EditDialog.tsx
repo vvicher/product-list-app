@@ -1,15 +1,18 @@
 import React from "react";
 import { Button, TextField } from "@mui/material";
+import { DataContext } from '../../../contexts/DataContext';
 import type { ProductItemType } from "../../../types/types";
 
 interface EditDialogProps {
   item: ProductItemType;
-  onCancel: () => void;
+  close: () => void;
 };
 
 export const EditDialog = (props: EditDialogProps) => {
-  const { onCancel } = props;
-  const { title, description } = props.item;
+  const { updateProduct } = React.useContext(DataContext);
+
+  const { close } = props;
+  const { title, description, id } = props.item;
 
   const [localTitle, setLocalTitle] = React.useState(title);
   const [localDescription, setLocalDescription] = React.useState(description);
@@ -20,6 +23,13 @@ export const EditDialog = (props: EditDialogProps) => {
 
   const changeDescription = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setLocalDescription(e.target.value);
+  };
+
+  const onSave = () => {
+    if (localTitle !== title || localDescription !== description) {
+      updateProduct(localTitle, localDescription, id);
+    };
+    close();
   };
 
   return (
@@ -49,8 +59,8 @@ export const EditDialog = (props: EditDialogProps) => {
           </div>
         </div>
         <div className="flex justify-between mt-6">
-          <Button variant="contained" onClick={() => onCancel()}>Cancel</Button>
-          <Button variant="contained" color="success">Save</Button>
+          <Button variant="contained" onClick={() => close()}>Cancel</Button>
+          <Button variant="contained" color="success" onClick={() => onSave()}>Save</Button>
         </div>
       </div>
     </div>
