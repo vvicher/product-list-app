@@ -2,7 +2,7 @@ import type { ImageType } from "../types/types"
 
 interface ImageProps {
   image: ImageType;
-  styles?: string
+  styles?: string;
 };
 
 export const Image = (props: ImageProps) => {
