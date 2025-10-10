@@ -9,6 +9,7 @@ interface DataProviderProps {
 
 export const DataProvider = (props: DataProviderProps) => {
   const [productItems, setProductItems] = useState([] as ProductItemType[]);
+  const [loaded, setLoaded] = useState(false);
 
   const { children } = props;
 
@@ -22,14 +23,15 @@ export const DataProvider = (props: DataProviderProps) => {
       localStorage.setItem('products', JSON.stringify(data));
       setProductItems(data);
     };
+
+    setLoaded(true);
   };
 
   const updateProduct = (newTitle: string, newDescription: string, id: string) => {
-    const productToUpdate = productItems.find(item => item.id === id);
     const productToUpdateIndex = productItems.findIndex(item => item.id === id);
 
     const updatedProduct = {
-      ...productToUpdate,
+      ...productItems[productToUpdateIndex],
       title: newTitle,
       description: newDescription,
       id: id,
@@ -44,7 +46,7 @@ export const DataProvider = (props: DataProviderProps) => {
   };
 
   return (
-    <DataContext value={{ items: productItems, initData, updateProduct }}>
+    <DataContext value={{ items: productItems, loaded, initData, updateProduct }}>
       {children}
     </DataContext>
   );

@@ -1,11 +1,11 @@
 import { Image } from "./Image";
 
 interface ImagePlaceholderProps {
-  styles?: string;
+  className?: string;
 };
 
 export const ImagePlaceholder = (props: ImagePlaceholderProps) => {
-  const { styles } = props;
+  const { className } = props;
 
   return (
     <Image
@@ -13,7 +13,7 @@ export const ImagePlaceholder = (props: ImagePlaceholderProps) => {
         url: "https://placehold.co/400x300?text=No Image",
         title: "No Image"
       }}
-      styles={styles}
+      className={className}
     />
   );
 };

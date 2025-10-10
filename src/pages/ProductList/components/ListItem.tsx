@@ -18,7 +18,7 @@ export const ListItem = (props: ListItemProps) => {
 
   const renderFirstImage = () => {
     if (!images?.length) {
-      return <ImagePlaceholder styles="w-28 h-[84px]" />
+      return <ImagePlaceholder className="w-28 h-[84px]" />
     }
 
     const image = images[0];
@@ -29,7 +29,7 @@ export const ListItem = (props: ListItemProps) => {
           url: image.url,
           title: image.title,
         }}
-        styles="w-28 h-[84px]"
+        className="w-28 h-[84px]"
       />
     );
   };
